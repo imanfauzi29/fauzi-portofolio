@@ -1,8 +1,6 @@
-import React from 'react';
-
 const Contact = () => {
   return (
-    <div>
+    <div id="contact" className="h-screen">
       <h1>Contact Page</h1>
     </div>
   );
