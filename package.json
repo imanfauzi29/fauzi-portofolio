@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npm run lint",
+    "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "precommit": "lint-staged"
@@ -30,13 +30,14 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
     "eslint": "^8.45.0",
+    "eslint-plugin-prettier": "latest",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "prettier": "latest",
+    "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
-    "husky": "^7.0.4"
+    "prettier": "latest",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
