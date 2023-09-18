@@ -1,5 +1,5 @@
-import ImageAbout from "../../../public/3d-casual-life-young-smiling-man-points-with-fingers-to-right-side.png";
-import nodejs from "../../../public/nodejs.svg";
+import ImageAbout from "../../assets/man-pooling.png";
+import nodejs from "../../assets/nodejs.svg";
 
 const About = () => {
   return (

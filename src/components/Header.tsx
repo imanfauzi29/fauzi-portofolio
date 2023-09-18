@@ -6,14 +6,28 @@ type Menu = {
   path: string;
 };
 const Header = () => {
-  const [currentPath, setCurrentPath] = useState("#");
+  const [currentPath, setCurrentPath] = useState("home");
   const [menus] = useState<Menu[]>([
-    { name: "Home", path: "#" },
-    { name: "About", path: "#about" },
-    { name: "Portofolio", path: "#portofolio" },
-    { name: "Blog", path: "#blog" },
-    { name: "Contact", path: "#contact" },
+    { name: "Home", path: "home" },
+    { name: "About", path: "about" },
+    { name: "Portofolio", path: "portofolio" },
+    { name: "Blog", path: "blog" },
+    { name: "Contact", path: "contact" },
   ]);
+
+  const handleClickNavLink = (path: string) => {
+    setCurrentPath(path);
+
+    const elem = document.getElementById(path);
+
+    if (!elem) return;
+    const y = elem.getBoundingClientRect().y + window.scrollY - 200;
+    console.log(y);
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -52,19 +66,18 @@ const Header = () => {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               {menus.map(({ name, path }, i) => (
                 <li key={i}>
-                  <a
-                    href={path}
+                  <button
                     className={classNames(
                       "block py-2 pl-3 pr-4 rounded md:bg-transparent text-gray-500 md:p-0 dark:text-white md:dark:text-primary-500",
                       {
                         "md:text-primary-700": path === currentPath,
                       },
                     )}
-                    onClick={() => setCurrentPath(path)}
+                    onClick={() => handleClickNavLink(path)}
                     aria-current="page"
                   >
                     {name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

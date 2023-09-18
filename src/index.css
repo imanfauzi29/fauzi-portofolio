@@ -9,3 +9,23 @@ html {
 body {
   font-family: "Archivo", sans-serif;
 }
+
+.bg-radial {
+  background: radial-gradient(
+    49.93% 49.95% at 48.09% 50.08%,
+    #6a30e3 0%,
+    #6080f2 100%
+  );
+}
+
+.hljs-punctuation {
+  color: white;
+}
+
+.hljs-attr {
+  color: rgb(67, 182, 194);
+}
+
+.hljs-string {
+  color: #98c379;
+}

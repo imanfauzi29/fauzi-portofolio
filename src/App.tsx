@@ -1,5 +1,6 @@
 import { About, Blog, Contact, Home, Portofolio } from "./components/pages";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Blog />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }
