@@ -23,7 +23,7 @@ const listContacts = [
 
 const Contact = () => {
   const [json, setJson] = useState<string>("");
-  const [myData, setMyData] = useState({
+  const [myData] = useState({
     fullname: "Iman Fauzi M",
     address: "Ciamis, Jawa Barat",
     hobbies: ["Music", "Eat"],

@@ -121,7 +121,7 @@ const Portofolio = () => {
               centeredSlides
               loop
             >
-              {lists.map(({ icon: Icon, link, name, text }, i) => (
+              {lists.map(({ icon: Icon, name, text }, i) => (
                 <SwiperSlide key={i}>
                   <div
                     className={classNames(" transition-all", {
