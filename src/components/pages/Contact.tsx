@@ -2,11 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { BiLogoLinkedinSquare, BiLogoGithub } from "react-icons/bi";
 import hljs from "highlight.js/lib/common";
-
-const variants = {
-  visible: { opacity: 1, transition: { duration: 1 } },
-  hidden: { opacity: 0 },
-};
+import { fade, fadeLeft, fadeRight, fadeTop } from "../../motion";
 
 const listContacts = [
   {
@@ -45,28 +41,37 @@ const Contact = () => {
       language: "json",
     });
 
-    console.log(js.value)
-
     setJson(js.value);
   }, []);
 
+  const getDomain = () => {
+    return window.location.hostname;
+  };
   return (
-    <div ref={ref} id="contact" className="h-screen">
-      <motion.div
-        className="flex flex-col items-center w-full mb-12"
-        animate={controls}
-        initial="hidden"
-        exit={"hidden"}
-        variants={variants}
-      >
-        <h2 className="text-4xl font-bold text-gray-600">
+    <div
+      ref={ref}
+      id="contact"
+      className="h-screen lg:max-w-7xl mx-auto snap-start flex flex-col justify-center items-center"
+    >
+      <motion.div className="flex flex-col items-center w-full mb-12">
+        <motion.div
+          variants={fadeTop}
+          initial="initial"
+          whileInView="animate"
+          className="text-4xl font-bold text-gray-600"
+        >
           Contact <span className="text-primary-700">Me</span>
-        </h2>
-        <div>Let's keep in touch with me </div>
+        </motion.div>
+        <motion.div variants={fade} initial="initial" whileInView="animate">
+          Let's keep in touch with me{" "}
+        </motion.div>
       </motion.div>
-      <div className="grid justify-center grid-cols-1 gap-16 mx-auto md:grid-cols-2 h-fit md:h-full">
-        <div
-          className={`relative max-w-md w-full max-h-[600px] h-full shadow-lg rounded-xl overflow-hidden bg-no-repeat bg-cover bg-center bg-[url('/src/assets/card.svg')]`}
+      <div className="grid justify-center grid-cols-1 gap-16 mx-auto md:grid-cols-2">
+        <motion.div
+          className={`relative max-w-md w-full h-[600px] shadow-lg rounded-xl overflow-hidden bg-no-repeat bg-cover bg-center bg-[url('/src/assets/card.svg')]`}
+          variants={fadeLeft}
+          initial="initial"
+          whileInView="animate"
         >
           <div className="block p-20 text-center">
             <span className="block mb-10 font-semibold text-white text-8xl whitespace-nowrap font-rowdies">
@@ -93,14 +98,18 @@ const Contact = () => {
             </div>
           </div>
           <span className="absolute block w-full text-center text-white bottom-5">
-            www.ifa.com
+            {getDomain()}
           </span>
-        </div>
-        <div>
-          <pre className="rounded-md p-6 bg-[#282C34]">
+        </motion.div>
+        <motion.div
+          variants={fadeRight}
+          initial="initial"
+          whileInView="animate"
+        >
+          <pre className="rounded-md p-6 bg-[#282C34] h-full">
             <code className="json" dangerouslySetInnerHTML={{ __html: json }} />
           </pre>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

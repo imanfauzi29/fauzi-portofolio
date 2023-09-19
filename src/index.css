@@ -29,3 +29,7 @@ body {
 .hljs-string {
   color: #98c379;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}

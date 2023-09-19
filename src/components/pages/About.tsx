@@ -1,25 +1,53 @@
 import ImageAbout from "../../assets/man-pooling.png";
 import nodejs from "../../assets/nodejs.svg";
+import { motion } from "framer-motion";
+import { fadeBottom, fadeLeft, fadeTop, zoomIn } from "../../motion";
 
 const About = () => {
   return (
-    <div id="about" className="h-screen">
+    <div
+      id="about"
+      className="h-screen lg:max-w-7xl mx-auto snap-start flex justify-center items-center flex-col"
+    >
       <div className="flex flex-col w-full items-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-600">
+        <motion.h2
+          variants={fadeBottom}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ margin: "-200px" }}
+          className="text-4xl font-bold text-gray-600"
+        >
           About <span className="text-primary-700">Me</span>
-        </h2>
-        <div>Ngoding 🧑🏼‍💻 | I Love What I Do 💖 | Listening Music 🎧 </div>
+        </motion.h2>
+        <motion.div
+          variants={fadeBottom}
+          initial="initial"
+          whileInView="animate"
+        >
+          Ngoding 🧑🏼‍💻 | I Love What I Do 💖 | Listening Music 🎧{" "}
+        </motion.div>
       </div>
       <div className="relative flex justify-center items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-16 grid-flow-dense justify-center md:flex-row items-center px-4 md:px-16 h-fit">
-          <div className="hidden md:block">
+          <motion.div
+            variants={zoomIn}
+            initial="initial"
+            whileInView="animate"
+            className="hidden md:block"
+          >
             <img src={ImageAbout} alt="image" />
-          </div>
+          </motion.div>
           <div>
-            <div className="flex flex-col gap-7">
-              <h4 className="uppercase font-bold tracking-widest text-2xl text-gray-600">
+            <motion.div
+              variants={fadeLeft}
+              initial="initial"
+              whileInView="animate"
+              className="flex flex-col gap-7"
+            >
+              <div className="uppercase font-bold tracking-widest text-2xl text-gray-600">
                 profile
-              </h4>
+              </div>
+              <div>
               <p>
                 Halo 👋🏼, nama saya Iman Fauzi seorang web developer dengan
                 pengalaman kerja 2 tahun di bidang programmer. Kebanyakan bahasa
@@ -37,6 +65,7 @@ const About = () => {
                 Fokus saya saat ini sedang memperdalam ilmu di backend developer
                 dan juga sedang belajar figma untuk design sebuah aplikasi.
               </p>
+              </div>
               <div className="flex gap-4">
                 <div className="rounded-full border border-gray-200 px-4 py-2">
                   <img src={nodejs} className="w-full" />
@@ -50,7 +79,7 @@ const About = () => {
                   Download CV
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
