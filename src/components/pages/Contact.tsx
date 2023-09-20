@@ -51,7 +51,7 @@ const Contact = () => {
     <div
       ref={ref}
       id="contact"
-      className="h-screen lg:max-w-7xl mx-auto snap-start flex flex-col justify-center items-center"
+      className="h-screen lg:max-w-7xl mx-auto snap-start flex flex-col justify-center items-center px-4"
     >
       <motion.div className="flex flex-col items-center w-full mb-12">
         <motion.div
@@ -68,7 +68,7 @@ const Contact = () => {
       </motion.div>
       <div className="grid justify-center grid-cols-1 gap-16 mx-auto md:grid-cols-2">
         <motion.div
-          className={`relative max-w-md w-full h-[600px] shadow-lg rounded-xl overflow-hidden bg-no-repeat bg-cover bg-center bg-[url('/src/assets/card.svg')]`}
+          className={`relative max-w-md w-full h-[500px] md:h-[600px] shadow-lg rounded-xl overflow-hidden bg-no-repeat bg-cover bg-center bg-[url('/src/assets/card.svg')]`}
           variants={fadeLeft}
           initial="initial"
           whileInView="animate"
@@ -105,6 +105,7 @@ const Contact = () => {
           variants={fadeRight}
           initial="initial"
           whileInView="animate"
+          className="hidden md:block"
         >
           <pre className="rounded-md p-6 bg-[#282C34] h-full">
             <code className="json" dangerouslySetInnerHTML={{ __html: json }} />

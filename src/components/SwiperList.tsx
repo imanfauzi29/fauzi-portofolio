@@ -7,6 +7,8 @@ import type { Swiper as SwiperType } from "swiper";
 import type { TSwiperList } from "../types/swiper";
 
 import "swiper/css";
+import { useAnimate } from "framer-motion";
+import { ConvertStringToHTML } from "../types/utils";
 
 interface Props {
   lists: TSwiperList[];
@@ -26,12 +28,11 @@ const SwiperList = ({ lists, sliderIndex, sliderCallback }: Props) => {
       slidesPerView={3}
       initialSlide={sliderIndex}
       onSlideChange={handleChangeSwiper}
-      autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
-      modules={[Autoplay]}
+      grabCursor
       centeredSlides
       loop
     >
-      {lists.map(({ icon: Icon, name, text }, i) => (
+      {lists.map(({ icon, name, text }, i) => (
         <SwiperSlide key={i}>
           <div
             className={classNames(" transition-all", {
@@ -49,7 +50,7 @@ const SwiperList = ({ lists, sliderIndex, sliderCallback }: Props) => {
                   "text-primary-500": i === sliderIndex,
                 })}
               >
-                <Icon size="42" />
+                <div dangerouslySetInnerHTML={{ __html: icon }} />
               </div>
               <div className="flex flex-col gap-4">
                 <h5
@@ -59,7 +60,10 @@ const SwiperList = ({ lists, sliderIndex, sliderCallback }: Props) => {
                 >
                   {name}
                 </h5>
-                <p className="text-gray-500">{truncateText(text, 80)}</p>
+                <p
+                  className="text-gray-500 h-[70px] overflow-hidden"
+                  dangerouslySetInnerHTML={{ __html: text }}
+                />
                 <a href="#" className="text-gray-500">
                   Read more
                 </a>

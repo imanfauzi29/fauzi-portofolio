@@ -1,17 +1,23 @@
 import { motion } from "framer-motion";
 import ImageHome from "../../assets/image.png";
-import { fade, fadeBottom, fadeLeft, yOffset, zoomIn } from "../../motion";
+import { fade, fadeBottom, fadeLeft, zoomIn } from "../../motion";
+import { downloadCV } from "../../types/utils";
 
 const Home = () => {
   return (
     <div
       id="home"
-      className="h-screen relative flex justify-center items-center lg:max-w-7xl mx-auto snap-start"
+      className="h-screen relative flex px-4 justify-center items-center lg:max-w-7xl mx-auto snap-start"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-16 grid-flow-dense justify-center md:flex-row items-center px-4 md:px-16 h-fit">
-        <div className="md:hidden">
+        <motion.div
+          initial="initial"
+          whileInView={"animate"}
+          variants={fadeBottom}
+          className="block md:hidden"
+        >
           <img src={ImageHome} alt="image" />
-        </div>
+        </motion.div>
         <div>
           <div className="flex relative">
             <motion.div
@@ -49,6 +55,7 @@ const Home = () => {
               initial="initial"
               whileInView="animate"
               variants={fade}
+              onClick={downloadCV}
               className="bg-primary-600 rounded-full px-6 py-2.5 text-white hover:bg-primary-700 transition-all"
             >
               Download CV
@@ -68,6 +75,7 @@ const Home = () => {
           initial="initial"
           whileInView={"animate"}
           variants={fadeBottom}
+          className="hidden md:block"
         >
           <img src={ImageHome} alt="image" />
         </motion.div>

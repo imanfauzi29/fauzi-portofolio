@@ -1,8 +1,8 @@
 export type TSwiperList = {
   name: string;
   type: string;
-  icon: React.ElementType;
+  icon: string;
   text: string;
   link: string;
-  image: string;
+  images: string[];
 };
