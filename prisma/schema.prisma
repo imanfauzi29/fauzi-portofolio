@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./porto.db"
+}
+
+model Portofolio {
+  id          String    @id @unique @default(cuid())
+  name        String
+  type        String
+  icon        String
+  description String?
+  images      String
+  createdAt   DateTime?
+  updatedAt   DateTime? @updatedAt
+}
+
+model Profile {
+  id              String    @id @unique @default(cuid())
+  first_name      String
+  middle_name     String?
+  last_name       String
+  full_name       String
+  title           String
+  subtitle        String?
+  welcome_message String?
+  my_about        String?
+  default_cv_id   CV?       @relation(fields: [cVId], references: [id])
+  tech_stack      Stack[]
+  about_subtitle  String?
+  createdAt       DateTime?
+  updatedAt       DateTime?
+  cVId            String?
+}
+
+model CV {
+  id        String    @id @unique @default(cuid())
+  cv_name   String
+  version   String?
+  cv_data   String
+  createdAt DateTime?
+  updatedAt DateTime?
+  Profile   Profile[]
+}
+
+model Stack {
+  id         String    @id @unique @default(cuid())
+  stack_name String    @unique
+  stack_icon String
+  createdAt  DateTime?
+  updatedAt  DateTime?
+  Profile    Profile?  @relation(fields: [profileId], references: [id])
+  profileId  String?
+}
+
+model Contact {
+  id           String       @id @unique @default(cuid())
+  contact_name String
+  contact_icon String
+  contact_type String
+  contact_url  String?
+  createdAt    DateTime?
+  updatedAt    DateTime?    @updatedAt
+}
